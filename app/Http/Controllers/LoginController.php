@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LandingPageController extends Controller
+class LoginController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view ("frontend.landing_page");
+        return view('frontend.login');
+    }
+
+    public function sign_up()
+    {
+        return view('frontend.signup');
     }
 
     /**
