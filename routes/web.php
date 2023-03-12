@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,8 @@ Route::controller(LoginController::class)->group(function(){
 
 Route::controller(LoginController::class)->group(function(){
     Route::get("/signup", "sign_up")->name("/signup");
+});
+
+Route::controller(AdminController::class)->group(function(){
+    Route::get("/admin", "index")->name("/admin");
 });

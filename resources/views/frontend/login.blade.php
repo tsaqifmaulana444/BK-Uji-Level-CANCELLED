@@ -6,6 +6,7 @@
         <p class=" font-normal ml-[0.6%] mt-1.5">Login Untuk Melanjutkan</p>
     </div>
     <form action="" method="" class="flex flex-col mx-auto mt-6">
+        @csrf
         <input type="text" placeholder="Username" name="login" class="bg-[#EFEFEF] w-[70%] py-3.5 text-sm mx-auto  pl-3.5 rounded-md">
         <input type="password" placeholder="Password" name="password" class="bg-[#EFEFEF] w-[70%] py-3.5 text-sm mx-auto  mt-3 pl-3.5 rounded-md">
         <input type="submit" value="Login" class="cursor-pointer bg-[#629460] py-2.5 text-lg w-[70%] mx-auto mt-3 rounded-md font-medium text-white">
@@ -24,6 +25,6 @@
         Login Menggunakan Github
     </button>
    
-    <p class="ml-[15%] w-fit mt-5 ml-[13%]">Belum Punya Akun? <a href="/signup" class="text-[#2200CC]">Sign Up</a></p>
+    <p class="ml-[15%] w-fit mt-5 ml-[13%] text-sm">Belum Punya Akun? <a href="/signup" class="text-[#2200CC]">Sign Up</a></p>
 </div>
 @endsection
