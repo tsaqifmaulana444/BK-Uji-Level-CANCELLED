@@ -1,8 +1,8 @@
 <footer class="w-full bg-[#629460] text-white">
-    <div class="flex w-[75vw] mx-auto justify-between py-[5vh]">
+    <div class="flex w-[75vw] mx-auto justify-between py-[4vh]">
             <div class="mr-[9vw]">
                 <h2 class="font-extrabold text-[200%]">KonsulYuk</h2>
-                <h4 class="text-sm ml-[1.4%]">Kata-Kata</h4>
+                <h4 class="text-sm ml-[1.4%]">Hayyuk</h4>
             </div>
             
             <div class="flex flex-col text-sm py-[1vh]">

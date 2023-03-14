@@ -9,10 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('AdminTemplate/Assets/css/style.css') }}">
     <title>Admin - KonsulYuk</title>
 </head>
-
 <body class="bg-gray-100">
-
-
     <!-- start navbar -->
     <div
         class="md:fixed md:w-full md:top-0 md:z-20 flex flex-row flex-wrap items-center bg-white p-6 border-b border-gray-300">

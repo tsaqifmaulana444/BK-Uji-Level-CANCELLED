@@ -47,7 +47,7 @@
             </div>
         </div>
         <div id="kotak_spesial"
-            class="top-[94vh] left-[9.4vw] absolute w-[80vw] bg-white h-[65vh]  rounded-md z-30 drop-shadow-2xl">
+            class="top-[94vh] left-[9.4vw] absolute w-[80vw] bg-white h-[65vh] rounded-md z-30 drop-shadow-2xl">
             <p>tes</p>
         </div>
     </section>

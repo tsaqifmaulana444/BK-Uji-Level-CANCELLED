@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\FrontEndController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,18 +16,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(LandingPageController::class)->group(function(){
+Route::controller(FrontEndController::class)->group(function(){
     Route::get("/", "index")->name("/");
 });
 
-Route::controller(LoginController::class)->group(function(){
-    Route::get("/login", "index")->name("/login");
+Route::controller(FrontEndController::class)->group(function(){
+    Route::get("/kritik_saran", "kritik_saran")->name("kritik_saran");
+});
+
+Route::controller(FrontEndController::class)->group(function(){
+    Route::get("/about_us", "about_us")->name("about_us");
 });
 
 Route::controller(LoginController::class)->group(function(){
-    Route::get("/signup", "sign_up")->name("/signup");
+    Route::get("/login", "index")->name("login");
+});
+
+Route::controller(LoginController::class)->group(function(){
+    Route::get("/signup", "sign_up")->name("signup");
 });
 
 Route::controller(AdminController::class)->group(function(){
-    Route::get("/admin", "index")->name("/admin");
+    Route::get("/admin", "index")->name("admin");
 });

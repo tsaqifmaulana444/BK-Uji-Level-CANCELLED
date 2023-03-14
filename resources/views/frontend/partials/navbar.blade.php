@@ -5,16 +5,16 @@
         <p class="text-[#ffffff] text-2xl font-extrabold my-1">KonsulYuk</p>
     </div>
     <div id="menu" class="ml-[24vw] flex text-[#ffffff] text-xs h-[100%] w-[32vw] justify-evenly font-bold	">
-        <a href="">
+        <a href="{{ route('/') }}">
             <p class="my-3 hover:text-slate-400">Home</p>
         </a>
-        <a href="">
+        <a href="{{ route('about_us') }}">
             <p class="my-3 hover:text-slate-400">Tentang Kami</p>
         </a>
         <a href="">
             <p class="my-3 hover:text-slate-400">Kontak</p>
         </a>
-        <a href="">
+        <a href="{{ route('kritik_saran') }}">
             <p class="my-3 hover:text-slate-400">Kritik & Saran</p>
         </a>
     </div>
