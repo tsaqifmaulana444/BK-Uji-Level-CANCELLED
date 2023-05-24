@@ -126,7 +126,7 @@
             autoplay: true,
             autoplaySpeed: 3000,
             prevArrow: '<span class="bg-[#000000] py-2 px-4 rounded-full absolute mt-[30.5vh] ml-[1.5vw] z-40 opacity-40"><i class="fa-solid fa-angle-left text-center text-white"></i></span>',
-            nextArrow: '<span class="bg-[#000000] py-2 px-4 rounded-full absolute mt-[-39.5vh] ml-[55.5vw] z-40 opacity-40"><i class="fa-solid fa-angle-right text-center text-white"></i></span>',
+            nextArrow: '<span class="bg-[#000000] py-2 px-4 rounded-full absolute mt-[-39.5vh] ml-[65vw] z-40 opacity-40"><i class="fa-solid fa-angle-right text-center text-white"></i></span>',
         });
     </script>
 </body>

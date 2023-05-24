@@ -47,8 +47,17 @@
             </div>
         </div>
         <div id="kotak_spesial"
-            class="top-[94vh] left-[9.4vw] absolute w-[80vw] bg-white h-[65vh] rounded-md z-30 drop-shadow-2xl">
-            <p>tes</p>
+            class="top-[94vh] left-[9.4vw] absolute w-[80vw] bg-white h-[65vh] rounded-md z-30 drop-shadow-2xl flex">
+            <div class="bg-white w-[40vw] flex flex-col justify-center ">
+              <img src="{{ asset('Assets/man.png') }}" alt="" class="w-[14vw]  rounded-[90%] mx-auto">
+            </div>
+            <div class="bg-[#303030] w-fit h-[57vh] my-auto">
+                .
+            </div>
+            <div class="bg-blue-200 w-fit">
+                <h1>Quote Of The Day</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore praesentium adipisci nesciunt laborum, officia doloremque excepturi similique minima! Corrupti molestias nisi quaerat nemo repellendus enim quam, laborum doloribus qui eos blanditiis dolorem!</p>
+            </div>
         </div>
     </section>
     <section class="mt-[50vh] ">
@@ -110,8 +119,8 @@
 
             </div>
             <div class="w-full mx-auto mt-[8vh]">
-                <button type="button"
-                    class="w-[40%] py-2.5 px-5 text-sm font-medium text-white focus:outline-none bg-[#629460] rounded-lg border border-gray-200 hover:bg-[#83A37B] focus:z-10 focus:ring-4 focus:ring-gray-200 mx-[30%]">Baca
+                <button type="button" onclick="location.href = '{{ route('news') }}'"
+                    class="w-[40%] py-2.5 px-5 text-sm font-medium text-white bg-[#629460] rounded-lg border border-gray-200 hover:bg-[#83A37B] mx-[30%]">Baca
                     Lebih Lengkap</button>
             </div>
         </div>

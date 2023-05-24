@@ -20,4 +20,12 @@ class FrontEndController extends Controller
     {
         return view ("frontend.about_us");
     }
+    public function contact_person()
+    {
+        return view ("frontend.contact");
+    }
+    public function berita()
+    {
+        return view ("frontend.news");
+    }
 }

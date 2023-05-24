@@ -16,5 +16,7 @@
     </form>
    
     <p class="ml-[15%] w-fit mt-5 ml-[13%] text-sm">Sudah Punya Akun ? <a href="/login" class="text-[#2200CC]">Login</a></p>
+    <p class="ml-[15%] w-fit mt-2 ml-[13%] text-sm">Kembali Ke <a href="/" class="text-[#2200CC]">Home</a></p>
+
 </div>
 @endsection
