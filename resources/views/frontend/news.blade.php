@@ -81,6 +81,39 @@
                     <img src="{{ asset("Assets/download.jpeg") }}" alt="" class="w-[100%] h-[100%]">
                 </div>
             </div>
+            <div class="flex justify-between mt-3 border-b border-[#777777] pb-4">
+                <div class="pt-3 w-[80%]">
+                    <p class="text-black opacity-50">April 4, 2020</p>
+                    <h1 class="font-bold text-xl mt-4">Apakah Eksistensi PHP Harus Dipertahankan? Ini Pendapat Ahli Javascript</h1>
+                    
+                    <p class="hover:underline hover:underline-offset-1 cursor-pointer mt-8">Baca Lebih Lengkap</p>
+                </div>
+                <div class="w-[22vw] h-[25vh]">
+                    <img src="{{ asset("Assets/download.jpeg") }}" alt="" class="w-[100%] h-[100%]">
+                </div>
+            </div>
+            <div class="flex justify-between mt-3 border-b border-[#777777] pb-4">
+                <div class="pt-3 w-[80%]">
+                    <p class="text-black opacity-50">April 4, 2020</p>
+                    <h1 class="font-bold text-xl mt-4">Apakah Eksistensi PHP Harus Dipertahankan? Ini Pendapat Ahli Javascript</h1>
+                    
+                    <p class="hover:underline hover:underline-offset-1 cursor-pointer mt-8">Baca Lebih Lengkap</p>
+                </div>
+                <div class="w-[22vw] h-[25vh]">
+                    <img src="{{ asset("Assets/download.jpeg") }}" alt="" class="w-[100%] h-[100%]">
+                </div>
+            </div>
+            <div class="flex justify-between mt-3 border-b border-[#777777] pb-4">
+                <div class="pt-3 w-[80%]">
+                    <p class="text-black opacity-50">April 4, 2020</p>
+                    <h1 class="font-bold text-xl mt-4">Apakah Eksistensi PHP Harus Dipertahankan? Ini Pendapat Ahli Javascript</h1>
+                    
+                    <p class="hover:underline hover:underline-offset-1 cursor-pointer mt-8">Baca Lebih Lengkap</p>
+                </div>
+                <div class="w-[22vw] h-[25vh]">
+                    <img src="{{ asset("Assets/download.jpeg") }}" alt="" class="w-[100%] h-[100%]">
+                </div>
+            </div>
         </div>
     </section>
 
