@@ -26,6 +26,7 @@ Route::controller(FrontEndController::class)->group(function(){
 
 Route::controller(LoginController::class)->group(function(){
     Route::get("/login", "index")->name("login");
+    Route::get("/tes", "tes")->name("tes");
     Route::get("/signup", "sign_up")->name("signup");
 });
 
