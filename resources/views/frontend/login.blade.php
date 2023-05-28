@@ -8,8 +8,24 @@
     <form action="/login" method="POST" class="flex flex-col mx-auto mt-6">
         @csrf
         <input type="text" placeholder="Username" name="name" class="bg-[#EFEFEF] w-[70%] py-3.5 text-sm mx-auto  pl-3.5 rounded-md">
+        @error('name')
+            <div class="w-fit ml-[6vw]">
+                <p class="text-red-600">{{ $message }}</p>
+            </div>
+        @enderror
         <input type="password" placeholder="Password" name="password" class="bg-[#EFEFEF] w-[70%] py-3.5 text-sm mx-auto  mt-3 pl-3.5 rounded-md">
+        @error('password')
+        <div class="w-fit ml-[6vw]">
+            <p class="text-red-600">{{ $message }}</p>
+        </div>
+        @enderror
+        @if (Session::has("error"))
+        <div class="w-fit ml-[6vw] mt-2">
+            <p class="text-red-600">{{ Session::get("error") }}</p>
+        </div>
+        @endif
         <input type="submit" value="Login" class="cursor-pointer bg-[#629460] py-2.5 text-lg w-[70%] mx-auto mt-3 rounded-md font-medium text-white">
+        
     </form>
     {{-- <p class="mx-auto w-fit text-xs my-5">Atau</p>
     <button class="bg-white border border-slate-500 py-2 w-[70%] rounded-md mt-3 flex justify-center items-center text-xs mx-auto font-semibold tracking-normal">
@@ -25,7 +41,7 @@
         Login Menggunakan Github
     </button> --}} 
    
-    <p class="w-fit mt-5 ml-[13%] text-sm">Belum Punya Akun? <a href="/signup" class="text-[#2200CC]">Sign Up</a></p>
-    <p class="w-fit mt-2 ml-[13%] text-sm">Kembali Ke <a href="/" class="text-[#2200CC]">Home</a></p>
+    <p class="w-fit mt-5 ml-[13%] text-sm">Belum Punya Akun? <a href="/signup" class="underline">Sign Up</a></p>
+    <p class="w-fit mt-2 ml-[13%] text-sm">Kembali Ke <a href="/" class="underline">Home</a></p>
 </div>
 @endsection

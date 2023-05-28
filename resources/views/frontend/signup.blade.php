@@ -15,8 +15,8 @@
         <input type="submit" value="Submit" class="cursor-pointer bg-[#629460] py-2.5 text-lg w-[70%] mx-auto mt-3 rounded-md font-medium text-white">
     </form>
    
-    <p class="ml-[15%] w-fit mt-5 ml-[13%] text-sm">Sudah Punya Akun ? <a href="/login" class="text-[#2200CC]">Login</a></p>
-    <p class="ml-[15%] w-fit mt-2 ml-[13%] text-sm">Kembali Ke <a href="/" class="text-[#2200CC]">Home</a></p>
+    <p class="w-fit mt-5 ml-[13%] text-sm">Sudah Punya Akun? <a href="/login" class="underline">Login</a></p>
+    <p class="w-fit mt-2 ml-[13%] text-sm">Kembali Ke <a href="/" class="underline">Home</a></p>
 
 </div>
 @endsection

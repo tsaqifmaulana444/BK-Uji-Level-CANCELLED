@@ -28,4 +28,20 @@ class FrontEndController extends Controller
     {
         return view ("frontend.news");
     }
+    public function home()
+    {
+        return view('frontend.dashboard_user');
+    }
+    public function profil()
+    {
+        return view('frontend.profil_user');
+    }
+    public function create()
+    {
+        return view('frontend.create_meet');
+    }
+    public function get_all()
+    {
+        return view('frontend.list_meet');
+    }
 }

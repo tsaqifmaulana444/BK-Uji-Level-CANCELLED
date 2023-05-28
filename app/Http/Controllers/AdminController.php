@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berita;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use function PHPUnit\Framework\callback;
@@ -11,7 +12,8 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('backend.main_admin');
+        $datas = User::with(['kelas'])->whereNotNull('kelas_id')->get();
+        return view('backend.main_admin', compact('datas'));
     }
     public function news()
     {
@@ -27,5 +29,14 @@ class AdminController extends Controller
 
         return redirect("/news_manage")->with("success", "Mapel berhasil di hapus");
 
+    }
+    
+    public function admin_home()
+    {
+        return view('backend.main_admin');
+    }
+    public function superadmin_home()
+    {
+        return view('backend.main_superadmin');
     }
 }
