@@ -23,6 +23,7 @@ class LoginSeeder extends Seeder
             'name' => 'user1',
             'email' => 'udin@gmail.com',
             'role' => 0,
+            'kelas_id' => 1,
             'password' => bcrypt('12345678')
         ]);
         User::create([

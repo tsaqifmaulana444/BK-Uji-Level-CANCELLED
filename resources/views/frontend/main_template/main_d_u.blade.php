@@ -8,7 +8,7 @@
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<body class="relative bg-yellow-50 overflow-hidden max-h-screen">
+<body class="relative bg-[#C9F2C7] overflow-hidden max-h-screen">
  
   @include('frontend.partials.side_d_u')
 

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pertemuan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class FrontEndController extends Controller
 {
@@ -32,16 +35,41 @@ class FrontEndController extends Controller
     {
         return view('frontend.dashboard_user');
     }
-    public function profil()
+    public function profil(string $name)
     {
-        return view('frontend.profil_user');
+        $nama = $name;
+        $data = [
+            'id' => DB::table('users')->where('name', $nama)->pluck('id')->first(),
+            'name' => DB::table('users')->where('name', $nama)->pluck('name')->first(),
+            'kelas_id' => DB::table('users')->where('name', $nama)->pluck('kelas_id')->first(),
+            'image' => DB::table('users')->where('name', $nama)->pluck('image')->first(),
+            'email' => DB::table('users')->where('name', $nama)->pluck('email')->first(),
+            'password' => DB::table('users')->where('name', $nama)->pluck('password')->first(),
+        ];
+        return view('frontend.profil_user')->with('data', $data);
+    }
+    public function updateProfil(Request $request, $id)
+    {
+        $update = User::find($id);
+
+        $imageName = time().".".$request->gambar->extension();
+
+        $request->gambar->storeAs('public/images', $imageName);
+        $update->update([
+            'name' => $request->name,
+            
+            'gambar' => $imageName
+        ]);
+        return redirect('admin');
     }
     public function create()
     {
         return view('frontend.create_meet');
     }
-    public function get_all()
+    public function get_all(string $name)
     {
-        return view('frontend.list_meet');
+        $nama = $name;
+        $datas = DB::table('pertemuans')->where('nama', $nama)->paginate(5);
+        return view('frontend.list_meet', compact('datas'));
     }
 }
