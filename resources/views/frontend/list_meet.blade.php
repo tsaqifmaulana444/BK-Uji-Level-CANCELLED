@@ -8,7 +8,7 @@
                     @foreach ($datas as $data)
                         <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2 my-3">
                             <div class="flex justify-between">
-                                <a href="javascript:void(0)" class="font-bold hover:text-yellow-800 hover:underline">{{ $data->alasan }}</a>
+                                <a href="{{ route('pertemuan.show', $data->id) }}" class="font-bold hover:text-yellow-800 hover:underline">{{ $data->alasan }}</a>
                                 @if ($data->status == 'Menunggu')
                                     <div class="text-yellow-600 text-xs">{{ $data->status }}</div>
                                 @endif 
@@ -34,4 +34,7 @@
             </div>
         </div>
     </main>
+    <script src="{{ asset('Assets/js/Noticme.min.js') }}"></script>
+    
+    
 @endsection

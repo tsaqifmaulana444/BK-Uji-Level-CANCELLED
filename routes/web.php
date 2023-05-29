@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FrontEndController;
@@ -24,9 +25,9 @@ Route::controller(FrontEndController::class)->group(function(){
     Route::get("/contact", "contact_person")->name("contact");
     Route::get("/news", "berita")->name("news");
     Route::get("/home", "home")->name("home");
-    Route::get("/profil/{name}", "profil")->name("user.profil");
-    Route::get("/buat_pertemuan", "create")->name("user.create");
-    Route::get("/daftar_pertemuan/{name}", "get_all")->name("user.get_all");
+    // Route::get("/profil/{name}", "profil")->name("pengguna.profil");
+    Route::get("/buat_pertemuan", "create")->name("pengguna.create");
+    Route::get("/daftar_pertemuan/{name}", "get_all")->name("pengguna.get_all");
 });
 
 Route::controller(LoginController::class)->group(function(){
@@ -47,3 +48,4 @@ Route::controller(AdminController::class)->group(function(){
 });
 
 Route::resource('/pertemuan', PertemuanController::class);
+Route::resource('/user', UserController::class);

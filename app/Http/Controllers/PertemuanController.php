@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Pertemuan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PertemuanController extends Controller
 {
 
     public function store(Request $request)
     {
+        $name = Auth::user()->name;
         $request->validate([
             'nama' => 'required',
             'kelas' => 'required',
@@ -24,15 +26,17 @@ class PertemuanController extends Controller
             'alasan' => $request->alasan,
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with(['message' => 'Pertemuan Berhasil Ditambahkan', 'name' => $name]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Pertemuan $pertemuan)
+    public function show($id)
     {
-        //
+        $data = Pertemuan::find($id);
+        return view('frontend.detail_meet', compact('data'));
+
     }
 
     /**

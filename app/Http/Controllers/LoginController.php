@@ -32,6 +32,7 @@ class LoginController extends Controller
         Auth::login($user);
 
         if(Auth::user()->role == '0'){
+            session()->flash('success', 'Selamat datang!');
             return redirect()->route('home');
         }else if(Auth::user()->role == '1'){
             return redirect()->route('admin.home');
