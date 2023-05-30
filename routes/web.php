@@ -40,10 +40,11 @@ Route::controller(LoginController::class)->group(function(){
 });
 
 Route::controller(AdminController::class)->group(function(){
-    Route::get("/admin", "index")->name("admin");
     Route::get("/news_manage", "news")->name("news_manage");
     Route::get("/delete_news/{id}", "delete_news")->name("delete_news");
     Route::get("/admin/home", "admin_home")->name("admin.home");
+    Route::get("/admin/kelas", "admin_kelas")->name("admin.kelas");
+    Route::get("/admin/profil/{user}", "admin_profil")->name("admin.profil");
     Route::get("/super_admin/home", "superadmin_home")->name("spadmin.home");
 });
 
