@@ -48,6 +48,11 @@ Route::controller(AdminController::class)->group(function(){
     Route::get("/admin/profil/{user}", "admin_profil")->name("admin.profil");
     Route::get("/admin/list/{name}", "admin_list")->name("admin.list");
     Route::get("/super_admin/home", "superadmin_home")->name("spadmin.home");
+    Route::get("/super_admin/kelas", "superadmin_kelas")->name("spadmin.kelas");
+    Route::get("/super_admin/guru", "superadmin_guru")->name("spadmin.guru");
+    Route::get("/super_admin/arsip", "superadmin_arsip")->name("spadmin.arsip");
+    Route::get("/super_admin/guru/create", "superadmin_create_guru")->name("spadmin.create_guru");
+    Route::get("/super_admin/profil/{user}", "spadmin_profil")->name("spadmin.profil");
 });
 
 Route::resource('/pertemuan', PertemuanController::class);
