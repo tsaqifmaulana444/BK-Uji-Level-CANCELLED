@@ -50,4 +50,15 @@ class AdminController extends Controller
     {
         return view('backend.main_superadmin');
     }
+
+    public function admin_list(string $name)
+    {
+        $nama = $name;
+        $datas = DB::table('pertemuans')->where('nama', $nama)->paginate(5);
+        return view('backend.admin_detail_page', compact('datas'));
+    }
+    public function admin_form()
+    {
+        return view('backend.admin_form');
+    }
 }
