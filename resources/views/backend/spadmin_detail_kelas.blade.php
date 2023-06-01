@@ -2,9 +2,9 @@
 
 @section('isi')
     <div class="flex ml-4 justify-between">
-        <h1 class="text-xl font-bold ">Halaman Koordinasi Akun Guru</h1>
-        <a href="{{ route('spadmin.create_guru') }}">
-            <button type="button" class="text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-4 py-2 mr-[5.3vw]">Tambah Guru</button>
+        <h1 class="text-xl font-bold ">Detail Kelas {{ $kelas }}</h1>
+        <a href="{{ route('spadmin.create_murid', [ $kelas, $id ]) }}">
+            <button type="button" class="text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-4 py-2 mr-[5.3vw]">Tambah Murid</button>
         </a>
 
     </div>
@@ -85,30 +85,4 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('Assets/js/Noticme.min.js') }}"></script>
-    <script>
-        function confirmDelete(userId) {
-            Noticme.any({
-                text: "Apakah Anda Ingin Menghapus Data {{ $data->name }}",
-                type: "danger",
-                color: "#FAB221",
-                icon: "info",
-                confirm: true,
-                message: "Tindakan Tidak Bisa Diurungkan",
-            }).then(response => {
-                if (response) {
-                    document.getElementById('deleteForm' + userId).submit();
-                }
-            });
-        }
-    </script>
-    <script>
-        @if (session('message'))
-            Noticme.any({
-                text: "{{ session('message') }}",
-                timer: 5000,
-                type: "success",
-            });
-        @endif
-    </script>
 @endsection

@@ -67,6 +67,13 @@ class AdminController extends Controller
         $datas = DB::table('kelas')->paginate(12);
         return view('backend.spadmin_kelas', compact('datas'));
     }
+
+    public function superadmin_detail_kelas($name, $id)
+    {
+        $datas = User::where('role', 0)->get();
+        return view('backend.spadmin_detail_kelas', compact('datas'))->with('kelas', $name)->with('id', $id);
+    }
+
     public function add_kelas(Request $request)
     {
         $request->validate([
@@ -91,6 +98,37 @@ class AdminController extends Controller
         return view('backend.spadmin_create_guru');
     }
 
+    public function superadmin_create_murid($nama, $id)
+    {
+        $kelas = Kelas::find($id);
+        return view('backend.spadmin_create_murid')->with('kelas', $kelas);
+    }
+
+    public function superadmin_edit_guru($id)
+    {
+        $data = DB::table('users')->where('id', $id)->first();
+        return view('backend.spadmin_edit_guru', compact('data'));
+    }
+
+    public function superadmin_update_guru(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'no_identitas' => 'required',
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'no_identitas' => $request->no_identitas,
+        ];
+
+        DB::table('users')->where('id', $id)->update($data);
+
+        return redirect()->route('spadmin.guru')->with('message', 'Data Berhasil Diubah');
+    }
+
     public function superadmin_store_guru(Request $request)
     {
         $request->validate([
@@ -104,12 +142,34 @@ class AdminController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'no_identitas' => $request->no_identitas,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'role' =>1,
         ]);
 
         return redirect()->route('spadmin.guru')->with('message', 'Akun Berhasil Ditambahkan');
-}
+    }
+
+    public function superadmin_store_murid(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'kelas_id' => 'required',
+            'email' => 'required',
+            'no_identitas' => 'required',
+            'password' => 'required',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'kelas_id' => $request->kelas,
+            'no_identitas' => $request->no_identitas,
+            'password' => bcrypt($request->password),
+            'role' =>0,
+        ]);
+
+        return redirect()->route('spadmin.kelas')->with('message', 'Akun Berhasil Ditambahkan');
+    }
 
     public function superadmin_destroy_guru($id)
     {

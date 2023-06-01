@@ -54,9 +54,14 @@ Route::prefix('super_admin')->group(function () {
     Route::get("/guru", [AdminController::class, 'superadmin_guru'])->name("spadmin.guru");
     Route::get("/arsip", [AdminController::class, 'superadmin_arsip'])->name("spadmin.arsip");
     Route::post("/tambah_kelas", [AdminController::class, 'add_kelas'])->name("spadmin.add_kelas");
+    Route::post("/murid/store", [AdminController::class, 'superadmin_store_murid'])->name("spadmin.store_murid");
     Route::post("/guru/store", [AdminController::class, 'superadmin_store_guru'])->name("spadmin.store_guru");
-    Route::post("/guru/delete/{id}", [AdminController::class, 'superadmin_destroy_guru'])->name("spadmin.destroy_guru");
+    Route::post("/guru/update/{id}", [AdminController::class, 'superadmin_update_guru'])->name("spadmin.update_guru");
     Route::get("/guru/create", [AdminController::class, 'superadmin_create_guru'])->name("spadmin.create_guru");
+    Route::post("/guru/delete/{id}", [AdminController::class, 'superadmin_destroy_guru'])->name("spadmin.destroy_guru");
+    Route::get("/kelas/detail/create/{name}/{id}", [AdminController::class, 'superadmin_create_murid'])->name("spadmin.create_murid");
+    Route::get("/kelas/detail/{name}/{id}", [AdminController::class, 'superadmin_detail_kelas'])->name("spadmin.detail_kelas");
+    Route::get("/guru/edit/{id}", [AdminController::class, 'superadmin_edit_guru'])->name("spadmin.edit_guru");
     Route::get("/profil/{user}", [AdminController::class, 'spadmin_profil'])->name("spadmin.profil");
 });
 

@@ -15,10 +15,12 @@
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4  ml-4 mr-7 mt-[4vh]">
         @foreach ($datas as $data)
-            <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 cursor-pointer">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Kelas {{ $data->nama }}</h5>
-                <p class="font-normal text-gray-700 dark:text-gray-400">Total Murid : 20</p>
-            </div>
+            <a href="{{ route('spadmin.detail_kelas', [$data->nama, $data->id]) }}">
+                <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 cursor-pointer">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Kelas {{ $data->nama }}</h5>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Total Murid : 20</p>
+                </div>
+            </a>
         @endforeach
 
     </div>
