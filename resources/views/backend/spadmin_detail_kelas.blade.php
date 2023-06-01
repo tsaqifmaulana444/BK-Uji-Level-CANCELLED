@@ -59,7 +59,7 @@
                                         </td>
                                         <td
                                             class="p-2 text-sm leading-normal text-left align-middle bg-transparent border-b whitespace-nowrap flex">
-                                            <form id="deleteForm{{ $data->id }}" action="/super_admin/guru/delete/{{ $data->id }}" method="POST">
+                                            <form id="deleteForm{{ $data->id }}" action="/super_admin/murid/delete/{{ $data->id }}" method="POST">
                                                 @csrf
                                                 <button type="button" onclick="confirmDelete('{{ $data->id }}')"
                                                     class="text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-1 py-1">
@@ -68,7 +68,7 @@
                                                     </span>
                                                 </button>
                                             </form>
-                                            <a href="{{ route('spadmin.edit_guru', $data->id) }}">
+                                            <a href="">
                                                 <button type="button" class=" text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-1 py-1">
                                                     <span class="material-symbols-outlined mt-1 w-9">
                                                         edit
@@ -85,4 +85,30 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('Assets/js/Noticme.min.js') }}"></script>
+    <script>
+        function confirmDelete(userId) {
+            Noticme.any({
+                text: "Apakah Anda Ingin Menghapus Data {{ $data->name }}",
+                type: "danger",
+                color: "#FAB221",
+                icon: "info",
+                confirm: true,
+                message: "Tindakan Tidak Bisa Diurungkan",
+            }).then(response => {
+                if (response) {
+                    document.getElementById('deleteForm' + userId).submit();
+                }
+            });
+        }
+    </script>
+    <script>
+        @if (session('message'))
+            Noticme.any({
+                text: "{{ session('message') }}",
+                timer: 5000,
+                type: "success",
+            });
+        @endif
+    </script>
 @endsection

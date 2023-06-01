@@ -59,8 +59,10 @@ Route::prefix('super_admin')->group(function () {
     Route::post("/guru/update/{id}", [AdminController::class, 'superadmin_update_guru'])->name("spadmin.update_guru");
     Route::get("/guru/create", [AdminController::class, 'superadmin_create_guru'])->name("spadmin.create_guru");
     Route::post("/guru/delete/{id}", [AdminController::class, 'superadmin_destroy_guru'])->name("spadmin.destroy_guru");
+    Route::post("/murid/delete/{id}", [AdminController::class, 'superadmin_destroy_murid'])->name("spadmin.destroy_murid");
     Route::get("/kelas/detail/create/{name}/{id}", [AdminController::class, 'superadmin_create_murid'])->name("spadmin.create_murid");
     Route::get("/kelas/detail/{name}/{id}", [AdminController::class, 'superadmin_detail_kelas'])->name("spadmin.detail_kelas");
+    Route::get("/kelas/detail/edit/{id}", [AdminController::class, 'superadmin_edit_murid'])->name("spadmin.edit_murid");
     Route::get("/guru/edit/{id}", [AdminController::class, 'superadmin_edit_guru'])->name("spadmin.edit_guru");
     Route::get("/profil/{user}", [AdminController::class, 'spadmin_profil'])->name("spadmin.profil");
 });

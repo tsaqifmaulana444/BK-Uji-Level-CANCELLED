@@ -27,5 +27,15 @@
     <div class="w-[20vw] mt-6 ml-4 mb-8">
         {{ $datas->links() }}
     </div>
+    <script src="{{ asset('Assets/js/Noticme.min.js') }}"></script>
+    <script>
+        @if (session('message'))
+            Noticme.any({
+                text: "{{ session('message') }}",
+                timer: 5000,
+                type: "success",
+            });
+        @endif
+    </script>
     
 @endsection

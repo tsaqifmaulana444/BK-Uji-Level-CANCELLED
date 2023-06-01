@@ -176,6 +176,11 @@ class AdminController extends Controller
         User::find($id)->delete();
         return redirect()->route('spadmin.guru')->with('message', 'Akun Berhasil Dihapus');
     }
+    public function superadmin_destroy_murid($id)
+    {
+        User::find($id)->delete();
+        return redirect()->route('spadmin.kelas')->with('message', 'Akun Berhasil Dihapus');
+    }
     public function superadmin_arsip()
     {
         return view('backend.spadmin_arsip');
