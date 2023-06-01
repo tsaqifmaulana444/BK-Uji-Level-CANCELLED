@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('kelas_id')->nullable();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('no_identitas')->nullable();
             $table->tinyInteger('role')->default(0);
             $table->string('image')->default('blank.png');
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -17,6 +17,7 @@ class LoginSeeder extends Seeder
             'name' => 'admin1',
             'email' => 'admin1@gmail.com',
             'role' => 1,
+            'no_identitas' => 182323092,
             'password' => bcrypt('12345678')
         ]);
         User::create([
@@ -24,12 +25,14 @@ class LoginSeeder extends Seeder
             'email' => 'udin@gmail.com',
             'role' => 0,
             'kelas_id' => 1,
+            'no_identitas' => 182323092,
             'password' => bcrypt('12345678')
         ]);
-        User::create([
+        User::create([ 
             'name' => 'spadmin1',
             'email' => 'spadmin1@gmail.com',
             'role' => 2,
+            'no_identitas' => 182323092,
             'password' => bcrypt('12345678')
         ]);
     }

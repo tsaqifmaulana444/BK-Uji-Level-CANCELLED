@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Berita;
+use App\Models\Kelas;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
@@ -64,15 +65,36 @@ class AdminController extends Controller
 
     public function superadmin_kelas()
     {
-        return view('backend.spadmin_kelas');
+        $datas = DB::table('kelas')->paginate(12);
+        return view('backend.spadmin_kelas', compact('datas'));
     }
+    public function add_kelas(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required',
+        ]);
+
+        Kelas::create([
+            'nama' => $request->nama,
+        ]);
+
+        return redirect()->route('spadmin.kelas')->with('message', 'Kelas Berhasil Ditambahkan');
+    }
+
     public function superadmin_guru()
     {
-        return view('backend.spadmin_guru');
+        $datas = User::where('role', 1)->get();
+        return view('backend.spadmin_guru', compact('datas'));
     }
+
     public function superadmin_create_guru()
     {
         return view('backend.spadmin_create_guru');
+    }
+    public function superadmin_destroy_guru($id)
+    {
+        User::find($id)->delete();
+        return redirect()->route('spadmin.guru')->with('message', 'Data Berhasil Dihapus');
     }
     public function superadmin_arsip()
     {

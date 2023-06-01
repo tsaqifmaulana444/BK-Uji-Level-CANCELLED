@@ -51,6 +51,8 @@ Route::controller(AdminController::class)->group(function(){
     Route::get("/super_admin/kelas", "superadmin_kelas")->name("spadmin.kelas");
     Route::get("/super_admin/guru", "superadmin_guru")->name("spadmin.guru");
     Route::get("/super_admin/arsip", "superadmin_arsip")->name("spadmin.arsip");
+    Route::post("/super_admin/tambah_kelas", "add_kelas")->name("spadmin.add_kelas");
+    Route::post("/super_admin/guru/delete/{id}", "superadmin_destroy_guru")->name("spadmin.destroy_guru");
     Route::get("/super_admin/guru/create", "superadmin_create_guru")->name("spadmin.create_guru");
     Route::get("/super_admin/profil/{user}", "spadmin_profil")->name("spadmin.profil");
 });

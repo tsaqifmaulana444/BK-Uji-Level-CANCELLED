@@ -34,6 +34,7 @@ class FrontEndController extends Controller
     }
     public function home()
     {
+        
         $name = Auth::user()->name;
         $datas = [];
         $datas['successMessage'] = session()->get('success');
