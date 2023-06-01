@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Berita;
 use App\Models\Kelas;
+use App\Models\Berita;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use function PHPUnit\Framework\callback;
 
 class AdminController extends Controller
@@ -25,9 +26,8 @@ class AdminController extends Controller
         $datas->delete();
 
         return redirect("/news_manage")->with("success", "Mapel berhasil di hapus");
-
     }
-    
+
     public function admin_home()
     {
         $message = session()->get('success');
@@ -44,9 +44,8 @@ class AdminController extends Controller
         !$user->kelas_id ? abort(404) : "";
         $user = User::with('kelas')->find($user->id);
         return view('backend.admin_profil', compact('user'));
-
     }
-    
+
     public function admin_list(string $name)
     {
         $nama = $name;
@@ -91,10 +90,31 @@ class AdminController extends Controller
     {
         return view('backend.spadmin_create_guru');
     }
+
+    public function superadmin_store_guru(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'no_identitas' => 'required',
+            'password' => 'required',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'no_identitas' => $request->no_identitas,
+            'password' => $request->password,
+            'role' =>1,
+        ]);
+
+        return redirect()->route('spadmin.guru')->with('message', 'Akun Berhasil Ditambahkan');
+}
+
     public function superadmin_destroy_guru($id)
     {
         User::find($id)->delete();
-        return redirect()->route('spadmin.guru')->with('message', 'Data Berhasil Dihapus');
+        return redirect()->route('spadmin.guru')->with('message', 'Akun Berhasil Dihapus');
     }
     public function superadmin_arsip()
     {
@@ -106,6 +126,5 @@ class AdminController extends Controller
         !$user->kelas_id ? abort(404) : "";
         $user = User::with('kelas')->find($user->id);
         return view('backend.spadmin_profil', compact('user'));
-
     }
 }
