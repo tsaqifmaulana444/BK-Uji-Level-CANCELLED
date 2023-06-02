@@ -42,7 +42,8 @@ Route::prefix('admin')->group(function () {
     Route::get("/news_manage", [AdminController::class, 'news'])->name("news_manage");
     Route::get("/delete_news/{id}", [AdminController::class, 'delete_news'])->name("delete_news");
     Route::get("/home", [AdminController::class, 'admin_home'])->name("admin.home");
-    Route::get("/buat_pertemuan", [AdminController::class, 'admin_form'])->name("admin.form");
+    Route::get("/buat_pertemuan/{id}", [AdminController::class, 'admin_form'])->name("admin.form");
+    Route::post("/buat_pertemuan/store", [AdminController::class, 'admin_store_pertemuan'])->name("admin.store_pertemuan");
     Route::get("/kelas/{id}", [AdminController::class, 'admin_kelas'])->name("admin.kelas");
     Route::get("/profil/{user}", [AdminController::class, 'admin_profil'])->name("admin.profil");
     Route::get("/list/{name}", [AdminController::class, 'admin_list'])->name("admin.list");

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Kelas;
 use App\Models\Pertemuan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -45,7 +46,10 @@ class FrontEndController extends Controller
     public function create($id)
     {
         $data = User::find($id);
-        return view('frontend.create_meet', compact('data'));
+        $data2 = Kelas::query()->where('id', $data->kelas_id)->first();
+        $data3 = $data2->guru->name;
+
+        return view('frontend.create_meet', compact('data'))->with('data3', $data3);
     }
     public function get_all(string $name)
     {

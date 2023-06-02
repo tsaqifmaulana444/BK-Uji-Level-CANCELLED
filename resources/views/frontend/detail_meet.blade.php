@@ -12,6 +12,9 @@
                         @if ($data->status == 'Menunggu')
                             <p class="text-yellow-600 text-lg mt-[1.4vh] mr-4">{{ $data->status }}</p>
                         @endif
+                        @if ($data->status == 'Panggilan')
+                            <div class="text-lime-600 text-lg mt-[1.4vh] mr-4">{{ $data->status }}</div>
+                        @endif
                         @if ($data->status == 'Ditolak')
                             <p class="text-red-600 text-lg mt-[1.4vh] mr-4">{{ $data->status }}</p>
                         @endif

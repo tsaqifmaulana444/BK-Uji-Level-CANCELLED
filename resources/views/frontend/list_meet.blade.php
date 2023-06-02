@@ -15,6 +15,9 @@
                                 @if ($data->status == 'Ditolak')
                                     <div class="text-red-600 text-xs">{{ $data->status }}</div>
                                 @endif
+                                @if ($data->status == 'Panggilan')
+                                    <div class="text-lime-600 text-xs">{{ $data->status }}</div>
+                                @endif
                                 @if ($data->status == 'Diterima')
                                     <div class="text-green-700 text-xs">{{ $data->status }}</div>
                                 @endif

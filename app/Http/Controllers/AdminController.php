@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Berita;
-use Illuminate\Http\Request;
+use App\Models\Pertemuan;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use function PHPUnit\Framework\callback;
 
@@ -48,12 +50,36 @@ class AdminController extends Controller
     public function admin_list(string $name)
     {
         $nama = $name;
-        $datas = DB::table('pertemuans')->where('nama', $nama)->paginate(5);
+        $datas = Pertemuan::where('nama', $nama)->paginate(5);
         return view('backend.admin_detail_page', compact('datas'));
     }
-    public function admin_form()
+    public function admin_form($id)
     {
-        return view('backend.admin_form');
+        // where('kelas_id', $id)
+        $datas = Kelas::query()->where('guru_id', $id)->get();
+        $datas2 = User::query()->where('role', 0)->get();
+        
+        return view('backend.admin_form')->with('datas', $datas)->with('datas2', $datas2);
+    }
+    public function admin_store_pertemuan(Request $request)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'kelas' => 'required',
+            'alasan' => 'required',
+            'tanggal' => 'required',
+        ]);
+
+        Pertemuan::create([
+            'nama' => $request->nama,
+            'kelas' => $request->kelas,
+            'guru' => Auth::user()->name,
+            'status' => 'Panggilan',
+            'alasan' => $request->alasan,
+            'tanggal' => $request->tanggal,
+        ]);
+
+        return redirect()->route('admin.home');
     }
 
     public function superadmin_home()
