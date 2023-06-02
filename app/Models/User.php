@@ -22,4 +22,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Kelas::class);
     }
+    public function guru()
+    {
+        return $this->hasMany(Kelas::class);
+    }
+    
 }

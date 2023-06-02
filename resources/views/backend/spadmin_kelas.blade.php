@@ -15,14 +15,24 @@
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4  ml-4 mr-7 mt-[4vh]">
         @foreach ($datas as $data)
-            <a href="{{ route('spadmin.detail_kelas', [$data->nama, $data->id]) }}">
                 <div class="w-full p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 cursor-pointer">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Kelas {{ $data->nama }}</h5>
-                    <p class="font-normal text-gray-700 dark:text-gray-400">Total Murid : 20</p>
+                    <div class="flex justify-between">
+                        <a href="{{ route('spadmin.detail_kelas', [$data->nama, $data->id]) }}">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">Kelas {{ $data->nama }}</h5>
+                        </a>
+                        <form action="{{ route('spadmin.destroy_kelas', $data->id ) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="bg-transparent">
+                                <span class="material-symbols-outlined ">
+                                    delete_sweep
+                                    </span>
+                            </button>
+                        </form>
+                    </div>
+                    <p class="font-normalTotal Murid : 20 text-gray-700 dark:text-gray-400">Wali Kelas : {{ $data->guru->name }}</p>
                 </div>
-            </a>
         @endforeach
-
+        
     </div>
     <div class="w-[20vw] mt-6 ml-4 mb-8">
         {{ $datas->links() }}

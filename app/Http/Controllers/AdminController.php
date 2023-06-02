@@ -33,9 +33,9 @@ class AdminController extends Controller
         $message = session()->get('success');
         return view('backend.main_admin', compact('message'));
     }
-    public function admin_kelas()
+    public function admin_kelas($id)
     {
-        $datas = DB::table('kelas')->paginate(12);
+        $datas = Kelas::query()->where('guru_id', $id)->paginate(12);
         return view('backend.admin_kelas', compact('datas'));
     }
 
@@ -64,13 +64,13 @@ class AdminController extends Controller
 
     public function superadmin_kelas()
     {
-        $datas = DB::table('kelas')->paginate(12);
+        $datas = Kelas::query()->paginate(12);
         return view('backend.spadmin_kelas', compact('datas'));
     }
 
     public function superadmin_detail_kelas($name, $id)
     {
-        $datas = User::where('role', 0)->get();
+        $datas = User::where('role', 0)->where('kelas_id', $id)->paginate(7);
         return view('backend.spadmin_detail_kelas', compact('datas'))->with('kelas', $name)->with('id', $id);
     }
 
@@ -190,7 +190,7 @@ class AdminController extends Controller
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'kelas_id' => $request->kelas,
+            'kelas_id' => $request->kelas_id,
             'no_identitas' => $request->no_identitas,
             'password' => bcrypt($request->password),
             'role' =>0,
@@ -208,6 +208,11 @@ class AdminController extends Controller
     {
         User::find($id)->delete();
         return redirect()->route('spadmin.kelas')->with('message', 'Akun Berhasil Dihapus');
+    }
+    public function superadmin_destroy_kelas($id)
+    {
+        Kelas::find($id)->delete();
+        return redirect()->route('spadmin.kelas')->with('message', 'Kelas Berhasil Dihapus');
     }
     public function superadmin_arsip()
     {

@@ -14,7 +14,7 @@
                 <input type="text" id="kelas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700" placeholder="email@gmail.com" required readonly value="{{ $kelas->nama }}">
             </div>
 
-            <input type="hidden" id="kelas" name="kelas_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700" placeholder="email@gmail.com" required readonly value="{{ $kelas->id }}">
+            <input type="text" id="kelas" name="kelas_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700" placeholder="email@gmail.com" required readonly value="{{ $kelas->id }}">
 
             <div class="mb-3">
                 <label for="email" class="block mb-3 text-sm font-medium text-gray-900">Email</label>

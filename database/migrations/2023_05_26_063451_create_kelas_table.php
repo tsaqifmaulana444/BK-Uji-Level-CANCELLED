@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('guru_id')->nullable();
             $table->string('nama');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

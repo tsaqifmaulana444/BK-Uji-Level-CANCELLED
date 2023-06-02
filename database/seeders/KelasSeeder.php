@@ -15,11 +15,11 @@ class KelasSeeder extends Seeder
     {
         Kelas::create([
             'nama' => 'x ipa',
-            
+            'guru_id' => 1,
         ]);
         Kelas::create([
             'nama' => 'x ips',
-            
+            'guru_id' => 1,
         ]);
         
     }

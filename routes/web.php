@@ -43,7 +43,7 @@ Route::prefix('admin')->group(function () {
     Route::get("/delete_news/{id}", [AdminController::class, 'delete_news'])->name("delete_news");
     Route::get("/home", [AdminController::class, 'admin_home'])->name("admin.home");
     Route::get("/buat_pertemuan", [AdminController::class, 'admin_form'])->name("admin.form");
-    Route::get("/kelas", [AdminController::class, 'admin_kelas'])->name("admin.kelas");
+    Route::get("/kelas/{id}", [AdminController::class, 'admin_kelas'])->name("admin.kelas");
     Route::get("/profil/{user}", [AdminController::class, 'admin_profil'])->name("admin.profil");
     Route::get("/list/{name}", [AdminController::class, 'admin_list'])->name("admin.list");
 });
@@ -61,6 +61,7 @@ Route::prefix('super_admin')->group(function () {
     Route::get("/guru/create", [AdminController::class, 'superadmin_create_guru'])->name("spadmin.create_guru");
     Route::post("/guru/delete/{id}", [AdminController::class, 'superadmin_destroy_guru'])->name("spadmin.destroy_guru");
     Route::post("/murid/delete/{id}", [AdminController::class, 'superadmin_destroy_murid'])->name("spadmin.destroy_murid");
+    Route::post("/kelas/delete/{id}", [AdminController::class, 'superadmin_destroy_kelas'])->name("spadmin.destroy_kelas");
     Route::get("/kelas/detail/create/{name}/{id}", [AdminController::class, 'superadmin_create_murid'])->name("spadmin.create_murid");
     Route::get("/kelas/detail/{name}/{id}", [AdminController::class, 'superadmin_detail_kelas'])->name("spadmin.detail_kelas");
     Route::get("/kelas/edit/{id}", [AdminController::class, 'superadmin_edit_murid'])->name("spadmin.edit_murid");
