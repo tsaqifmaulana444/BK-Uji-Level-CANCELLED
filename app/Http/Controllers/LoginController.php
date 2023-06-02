@@ -38,6 +38,7 @@ class LoginController extends Controller
             session()->flash('success', 'Selamat datang!');
             return redirect()->route('admin.home');
         }else if(Auth::user()->role == '2'){
+            session()->flash('success', 'Selamat datang!');
             return redirect()->route('spadmin.home');
         }
     }

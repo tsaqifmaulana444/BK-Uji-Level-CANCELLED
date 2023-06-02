@@ -25,8 +25,8 @@ Route::controller(FrontEndController::class)->group(function(){
     Route::get("/contact", "contact_person")->name("contact");
     Route::get("/news", "berita")->name("news");
     Route::get("/home", "home")->name("home");
-    // Route::get("/profil/{name}", "profil")->name("pengguna.profil");
-    Route::get("/buat_pertemuan", "create")->name("pengguna.create");
+    Route::get("/update_profil/{id}", "update_profil")->name("update_profil");
+    Route::get("/buat_pertemuan/{id}", "create")->name("pengguna.create");
     Route::get("/daftar_pertemuan/{name}", "get_all")->name("pengguna.get_all");
 });
 
@@ -57,14 +57,16 @@ Route::prefix('super_admin')->group(function () {
     Route::post("/murid/store", [AdminController::class, 'superadmin_store_murid'])->name("spadmin.store_murid");
     Route::post("/guru/store", [AdminController::class, 'superadmin_store_guru'])->name("spadmin.store_guru");
     Route::post("/guru/update/{id}", [AdminController::class, 'superadmin_update_guru'])->name("spadmin.update_guru");
+    Route::post("/kelas/detail/update/{id}", [AdminController::class, 'superadmin_update_murid'])->name("spadmin.update_murid");
     Route::get("/guru/create", [AdminController::class, 'superadmin_create_guru'])->name("spadmin.create_guru");
     Route::post("/guru/delete/{id}", [AdminController::class, 'superadmin_destroy_guru'])->name("spadmin.destroy_guru");
     Route::post("/murid/delete/{id}", [AdminController::class, 'superadmin_destroy_murid'])->name("spadmin.destroy_murid");
     Route::get("/kelas/detail/create/{name}/{id}", [AdminController::class, 'superadmin_create_murid'])->name("spadmin.create_murid");
     Route::get("/kelas/detail/{name}/{id}", [AdminController::class, 'superadmin_detail_kelas'])->name("spadmin.detail_kelas");
-    Route::get("/kelas/detail/edit/{id}", [AdminController::class, 'superadmin_edit_murid'])->name("spadmin.edit_murid");
+    Route::get("/kelas/edit/{id}", [AdminController::class, 'superadmin_edit_murid'])->name("spadmin.edit_murid");
     Route::get("/guru/edit/{id}", [AdminController::class, 'superadmin_edit_guru'])->name("spadmin.edit_guru");
     Route::get("/profil/{user}", [AdminController::class, 'spadmin_profil'])->name("spadmin.profil");
+    Route::post("/profil/update/{id}", [AdminController::class, 'spadmin_update_profil'])->name("spadmin.update_profil");
 });
 
 

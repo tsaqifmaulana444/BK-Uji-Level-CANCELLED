@@ -68,7 +68,7 @@
                                                     </span>
                                                 </button>
                                             </form>
-                                            <a href="">
+                                            <a href="{{ route('spadmin.edit_murid', $data->id) }}">
                                                 <button type="button" class=" text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-1 py-1">
                                                     <span class="material-symbols-outlined mt-1 w-9">
                                                         edit

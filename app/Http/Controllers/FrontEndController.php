@@ -42,14 +42,42 @@ class FrontEndController extends Controller
 
         return view('frontend.dashboard_user', compact('datas'));
     }
-    public function create()
+    public function create($id)
     {
-        return view('frontend.create_meet');
+        $data = User::find($id);
+        return view('frontend.create_meet', compact('data'));
     }
     public function get_all(string $name)
     {
         $nama = $name;
         $datas = DB::table('pertemuans')->where('nama', $nama)->paginate(5);
         return view('frontend.list_meet', compact('datas'));
+    }
+
+    public function update_profil(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'no_identitas' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'no_identitas' => $request->no_identitas,
+        ];
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('images/', $imageName);
+            $data['image'] = $imageName;
+        }
+
+        $update = User::where('id', $id)->update($data);
+
+        return redirect()->route('home');
     }
 }

@@ -45,7 +45,6 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        !$user->kelas_id ? abort(404) : "";
         $user = User::with('kelas')->find($user->id);
         return view('frontend.profil_user', compact('user'));
 

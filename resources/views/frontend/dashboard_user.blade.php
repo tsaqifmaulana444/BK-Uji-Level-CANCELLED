@@ -38,7 +38,7 @@
                                         <div class="font-bold text-large text-gray-800 leading-none">Punya Masalah? <br>Atau Sekedar Ingin Berbincang?
                                         </div>
                                         <div class="mt-5">
-                                            <a href="{{ route('pengguna.create') }}">
+                                            <a href="{{ route('pengguna.create', Auth::user()->id) }}">
                                               <button type="button" 
                                                   class="inline-flex items-center justify-center py-2 px-3 rounded-xl bg-white text-gray-800 hover:text-green-500 text-sm font-semibold transition">
                                                   Buat Pertemuan

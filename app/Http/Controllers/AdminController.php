@@ -41,7 +41,6 @@ class AdminController extends Controller
 
     public function admin_profil(User $user)
     {
-        !$user->kelas_id ? abort(404) : "";
         $user = User::with('kelas')->find($user->id);
         return view('backend.admin_profil', compact('user'));
     }
@@ -59,7 +58,8 @@ class AdminController extends Controller
 
     public function superadmin_home()
     {
-        return view('backend.main_superadmin');
+        $message = session()->get('success');
+        return view('backend.main_superadmin', compact('message'));
     }
 
     public function superadmin_kelas()
@@ -110,6 +110,12 @@ class AdminController extends Controller
         return view('backend.spadmin_edit_guru', compact('data'));
     }
 
+    public function superadmin_edit_murid($id)
+    {
+        $data = User::find($id);
+        return view('backend.spadmin_edit_murid', compact('data'));
+    }
+
     public function superadmin_update_guru(Request $request, $id)
     {
         $request->validate([
@@ -127,6 +133,28 @@ class AdminController extends Controller
         DB::table('users')->where('id', $id)->update($data);
 
         return redirect()->route('spadmin.guru')->with('message', 'Data Berhasil Diubah');
+    }
+
+    public function superadmin_update_murid(Request $request, $id)
+    {
+        
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'no_identitas' => 'required',
+        ]);
+        
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'no_identitas' => $request->no_identitas,
+            
+        ];
+
+        DB::table('users')->where('id', $id)->update($data);
+
+        return redirect()->route('spadmin.kelas')->with('message', 'Data Berhasil Diubah');
     }
 
     public function superadmin_store_guru(Request $request)
@@ -188,8 +216,35 @@ class AdminController extends Controller
 
     public function spadmin_profil(User $user)
     {
-        !$user->kelas_id ? abort(404) : "";
         $user = User::with('kelas')->find($user->id);
         return view('backend.spadmin_profil', compact('user'));
     }
+    public function spadmin_update_profil(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'no_identitas' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'no_identitas' => $request->no_identitas,
+        ];
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move('images/', $imageName);
+            $data['image'] = $imageName;
+        }
+
+        $update = User::where('id', $id)->update($data);
+
+        return redirect()->route('spadmin.home')->with('message', 'Profil Berhasil Diubah');
+    }
+
+
 }

@@ -481,8 +481,23 @@
                 </div>
             </div>
         </div>
-
-        <!-- card 2 -->
-
     </div>
+    <script src="{{ asset('Assets/js/Noticme.min.js') }}"></script>
+    <script>
+        @if(isset($message))
+            Noticme.any({
+                text: "{{ $message }}",
+                timer: 5000,
+                type: "success",
+            });
+        @endif
+        @if (session('message'))
+            Noticme.any({
+                text: "{{ session('message') }}",
+                timer: 5000,
+                type: "success",
+            });
+        @endif
+    </script>
+    
 @endsection
