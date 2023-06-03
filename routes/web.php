@@ -44,9 +44,11 @@ Route::prefix('admin')->group(function () {
     Route::get("/home", [AdminController::class, 'admin_home'])->name("admin.home");
     Route::get("/buat_pertemuan/{id}", [AdminController::class, 'admin_form'])->name("admin.form");
     Route::post("/buat_pertemuan/store", [AdminController::class, 'admin_store_pertemuan'])->name("admin.store_pertemuan");
+    Route::post("/buat_pertemuan/update/{id}", [AdminController::class, 'admin_update_pertemuan'])->name("admin.update_pertemuan");
     Route::get("/kelas/{id}", [AdminController::class, 'admin_kelas'])->name("admin.kelas");
     Route::get("/profil/{user}", [AdminController::class, 'admin_profil'])->name("admin.profil");
     Route::get("/list/{name}", [AdminController::class, 'admin_list'])->name("admin.list");
+    Route::get("/list/detail/{id}", [AdminController::class, 'admin_detail_meet'])->name("admin.detail_meet");
 });
 
 Route::prefix('super_admin')->group(function () {

@@ -4,7 +4,7 @@
     @foreach ($datas as $data)
         <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2 my-3">
             <div class="flex justify-between">
-                <a href="{{ route('pertemuan.show', $data->id) }}"
+                <a href="{{ route('admin.detail_meet', $data->id) }}"
                     class="font-bold hover:text-yellow-800 hover:underline">{{ $data->alasan }}</a>
                 @if ($data->status == 'Menunggu')
                     <div class="text-yellow-600 text-xs">{{ $data->status }}</div>
@@ -14,6 +14,9 @@
                 @endif
                 @if ($data->status == 'Diterima')
                     <div class="text-green-700 text-xs">{{ $data->status }}</div>
+                @endif
+                @if ($data->status == 'Panggilan')
+                    <div class="text-lime-600 text-xs">{{ $data->status }}</div>
                 @endif
                 @if ($data->status == 'Selesai')
                     <div class="text-blue-500 text-xs">{{ $data->status }}</div>

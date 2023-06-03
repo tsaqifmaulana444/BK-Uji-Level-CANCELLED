@@ -47,12 +47,18 @@ class AdminController extends Controller
         return view('backend.admin_profil', compact('user'));
     }
 
-    public function admin_list(string $name)
+    public function admin_list($name)
     {
-        $nama = $name;
-        $datas = Pertemuan::where('nama', $nama)->paginate(5);
-        return view('backend.admin_detail_page', compact('datas'));
+        $datas = Pertemuan::query()->where('guru', $name)->paginate(5);
+        return view('backend.admin_list_page', compact('datas'));
     }
+
+    public function admin_detail_meet($id)
+    {
+        $data = Pertemuan::query()->where('id', $id)->first();
+        return view('backend.admin_detail_meet', compact('data'));
+    }
+    
     public function admin_form($id)
     {
         // where('kelas_id', $id)
@@ -80,6 +86,35 @@ class AdminController extends Controller
         ]);
 
         return redirect()->route('admin.home');
+    }
+
+    public function admin_update_pertemuan(Request $request, $id)
+    {
+        $request->validate([
+            'nama' => 'required',
+            'kelas' => 'required',
+            'guru' => 'required',
+            'status' => 'required',
+            'tanggal' => 'required',
+            'alasan' => 'required',
+            'tanggapan' => 'required',
+            
+        ]);
+
+        $data = [
+            'nama' => $request->nama,
+            'kelas' => $request->kelas,
+            'guru' => $request->guru,
+            'status' => $request->status,
+            'tanggal' => $request->tanggal,
+            'alasan' => $request->alasan,
+            'tanggapan' => $request->tanggapan,
+        ];
+
+
+        DB::table('pertemuans')->where('id', $id)->update($data);
+        
+        return redirect()->route('admin.home')->with('message', 'Pertemuan Berhasil Diubah');
     }
 
     public function superadmin_home()
@@ -242,7 +277,8 @@ class AdminController extends Controller
     }
     public function superadmin_arsip()
     {
-        return view('backend.spadmin_arsip');
+        $datas = Kelas::query()->paginate(9);
+        return view('backend.spadmin_arsip', compact('datas'));
     }
 
     public function spadmin_profil(User $user)
